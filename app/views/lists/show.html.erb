@@ -3,16 +3,17 @@
 </h1>
 
 <ul>
-<% @movies.each do |movie|  %>
-<% bookmark = Bookmark.where(movie_id: movie.id).where(list_id: @list.id).first %>
-  <li>
-    <%= movie.title %>
-    <%= movie.overview %>
-    <%= movie.rating %>
-     <%= bookmark.comment %>
-  </li>
+  <% @bookmarks.each do |bookmark|  %>
+    <% movie = bookmark.movie %>
+    <li>
+      <%= movie.title %>
+      <%= movie.overview %>
+      <%= movie.rating %>
+      <%= bookmark.comment %>
+      <%= link_to 'delete bookmark', bookmark_path(bookmark), data: { turbo_method: :delete } %>
+    </li>
   <% end %>
 </ul>
 
-<p><%= link_to "Bookmark Movie",  new_list_bookmark_path(@list), class: 'btn-book' %></p>
-<%# <%= link_to "Delete a bookmark", list__path(@list), class: 'btn-delete'%>
+<p><%= link_to "Bookmark Movie",  new_list_bookmark_path(@list), class: 'btn btn-warning' %></p>
+<p> <%= link_to "Back to favourites list", lists_path, class: 'btn btn-success' %>

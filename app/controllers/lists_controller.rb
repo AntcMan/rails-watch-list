@@ -9,7 +9,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    @movies = @list.movies
+    @bookmarks = @list.bookmarks
   end
 
   def create
@@ -21,10 +21,20 @@ class ListsController < ApplicationController
     end
   end
 
+  # DELETE /bookmarks/:id
+  def destroy
+    # Find the bookmark with params[:id]
+    @bookmark = Bookmark.find(params[:id])
+    # destroy bookmark
+    @bookmark.destroy
+    # redirect to list show page
+    redirect_to list_path(@bookmark.list), status: :see_other
   end
+
 
   private
 
   def list_params
     params.require(:list).permit(:name)
   end
+end
