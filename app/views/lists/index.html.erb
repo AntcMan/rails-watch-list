@@ -3,6 +3,9 @@ lists
 <ol>
   <% @lists.each do |list| %>
   <li>
-  <%= link_to list.name, lists_path(list) %>
+  <%= link_to list.name, list_path(list) %>
   </li>
+  <% end %>
 </ol>
+<hr>
+<%= link_to 'Create new list', new_list_path, class: "btn btn-primary"%>
