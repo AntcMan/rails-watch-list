@@ -16,7 +16,6 @@ Movie.destroy_all
     poster_url: "https://unsplash.com/s/photos/movie/#{movie_name}",
     rating: rand(1..10)
   )
-
 end
 
 puts "Finished!"
