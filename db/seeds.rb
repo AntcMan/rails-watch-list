@@ -8,7 +8,7 @@
 
 Movie.destroy_all
 
-5.times do
+20.times do
   p movie_name = Faker::Movie.unique.title
   Movie.create!(
     title: movie_name,
